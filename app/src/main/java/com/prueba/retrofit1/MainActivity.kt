@@ -1,6 +1,7 @@
 package com.prueba.retrofit1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ArticleAdapter
     private val articleList = mutableListOf<Articles>()
+    var country: String = "us"
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            val call = api.getService()?.getNewsByCategory("us",category,"4b94054dbc6b4b3b9e50d8f62cde4f6c")
+            val call = api.getService()?.getNewsByCategory(country,category,"4b94054dbc6b4b3b9e50d8f62cde4f6c")
             val news: NewsResponse? = call?.body()
 
             runOnUiThread{
@@ -67,6 +71,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     }
 
+
+
     private fun hideKeyBoard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.viewRoot.windowToken, 0)
@@ -86,6 +92,17 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
+    }
+
+    fun SelCountry(view: View) {
+        this.country = "mx"
+    }
+
+    fun SelJP(view: View) {
+        this.country = "jp"
+    }
+    fun SelUs(view: View) {
+        this.country = "us"
     }
 
 

@@ -20,13 +20,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="usa" />
+            android:text="usa"
+            android:onClick="SelUs"/>
 
         <Button
             android:id="@+id/mx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="SelCountry"
             android:text="mexico" />
 
         <Button
@@ -34,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="japon" />
+            android:text="japon"
+            android:onClick="SelJP"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
